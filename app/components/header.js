@@ -11,10 +11,10 @@ const Header = () => {
     <h1 className="text-black dark:text-white text-4xl">Horizaura</h1>
   </div>
   <div id="Links" className="flex items-center">
-    <Link href='/' className="link" href="/">Home</Link>
-    <Link href='/store' className="link" href="/store">Store</Link>
-    <Link href='/blogs' className="link" href="/blog">Blog</Link>
-    <Link href='ContactUs' className="link" href="/ContactUs">Contact Us</Link>
+    <Link className="link" href="/">Home</Link>
+    <Link className="link" href="/store">Store</Link>
+    <Link className="link" href="/blog">Blog</Link>
+    <Link className="link" href="/ContactUs">Contact Us</Link>
   </div>
   <div id="Icons" className="flex items-center">
     <a href=""><Image src="/media/icons/search.svg" width={100} height={100} className="h-10 p-1" alt=""/></a>
