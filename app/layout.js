@@ -5,7 +5,6 @@ import Header from "./components/header"
 import Head from 'next/head';
 
 
-
 const montserrat = Montserrat({
   subsets: ['latin'],
   dispaly: 'swap',
