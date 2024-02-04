@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from 'react'
 import HeroImage from "../public/media/products/HZ1.jpg";
 
+
 export const metadata = {
   title: 'Horizaura : Furniture and Sofas Redefined',
   description: `Horizaura: Enhancing homes with beautifully crafted elegance. Explore our stunning selection of sofas, home decor, and captivating resin plates. Experience the blend of artistic craftsmanship and comfort in every aspect. Welcome to a world where creativity meets refined style.`

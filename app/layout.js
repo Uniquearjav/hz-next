@@ -3,6 +3,7 @@ import './globals.css'
 import { Montserrat } from "next/font/google";
 import Header from "./components/header"
 import Head from 'next/head';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const montserrat = Montserrat({
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <link rel="manifest" href="/media/favicon/site.webmanifest"/>
       </Head>
       <body><Header/>{children}
+      <SpeedInsights />
       </body>
     </html>
   )

@@ -3,6 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import useDarkMode from './darkMode'
+import search_svg from '../../public/media/icons/search.svg'
+import cart_svg from '../../public/media/icons/cart.svg'
+import favicon from '../../public/media/favicon/hz.svg'
 
 export default function Header() {
   const [colorTheme, setTheme] = useDarkMode();
@@ -10,7 +13,7 @@ export default function Header() {
         <header className='dark:text-white dark:bg-slate-800'>
     <div id="NavBar" className="flex justify-between">
       <div id="Logo" className="flex flex-row items-center">
-        <Image priority={true} src="/media/favicon/hz.svg" width={64} height={64} className="h-20 p-1" alt=""/>
+        <Image priority={true} src={favicon} width={64} height={64} className="h-20 p-1" alt=""/>
         <h1 className="text-black dark:text-white text-4xl">Horizaura</h1>
       </div>
       <div id="Links" className="flex items-center">
@@ -20,8 +23,8 @@ export default function Header() {
         
       </div>
       <div id="Icons" className="flex items-center">
-        <a href=""><Image src="/media/icons/search.svg" width={100} height={100} className="h-10 dark:text-white p-1" alt=""/></a>
-        <a href=""><Image src="/media/icons/cart.svg" width={100} height={100} className="h-10 p-1" alt=""/></a>
+        <a href=""><Image src={search_svg} className="h-10 dark:text-white p-1" alt=""/></a>
+        <a href=""><Image src={cart_svg} className="h-10 p-1" alt=""/></a>
         {colorTheme === "light" ? (
         <svg
           onClick={() => setTheme("light")}
