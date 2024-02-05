@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon/favicon-32x32.png"/>
       <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png"/>
       <link rel="manifest" href="/media/favicon/site.webmanifest"/>
-      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9405103571986725"
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9405103571986725"
      crossorigin="anonymous" />
       </Head>
       <body><Header/>{children}
