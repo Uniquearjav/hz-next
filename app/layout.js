@@ -5,6 +5,8 @@ import Header from "./components/header"
 import Head from 'next/head';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
+import Script from 'next/script'
+
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -23,6 +25,8 @@ export default function RootLayout({ children }) {
       <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon/favicon-32x32.png"/>
       <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png"/>
       <link rel="manifest" href="/media/favicon/site.webmanifest"/>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9405103571986725"
+     crossorigin="anonymous" />
       </Head>
       <body><Header/>{children}
       <SpeedInsights />
