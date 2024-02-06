@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 async function getProducts() {
-  const response = await fetch('https://www.horizaura.tech/api/products.json');
+  const response = await fetch('https://hz-web.vercel.app/store/api/productjson?format=json');
   const products = await response.json();
   console.log(products);
   return products;
@@ -43,7 +43,7 @@ export async function page() {
               <Image src={`/media/products/HZ${product.id}.jpg`} alt="Product" width={288} height={320} className="h-80 w-72 object-cover rounded-t-xl" />
               <div className="px-4 py-3 w-72">
                 <span className="text-gray-400 mr-3 uppercase text-xs">HORIZAURA</span>
-                <p className="text-lg font-bold text-black truncate block capitalize">{ product.title}</p>
+                <p className="text-lg font-bold text-black truncate block capitalize">{ product.name}</p>
                 <div className="flex items-center">
                   <p className="text-lg font-semibold text-black cursor-auto my-3">&#8377; { product.price}</p>
                   <div className="ml-auto">
