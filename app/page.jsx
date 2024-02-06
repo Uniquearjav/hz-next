@@ -10,10 +10,10 @@ export const metadata = {
 }
 
 async function getProducts() {
-  const response = await fetch('https://dummyjson.com/products');
+  const response = await fetch('/api/products.json');
   const products = await response.json();
-  console.log(products.products[0]);
-  return products.products;
+  console.log(products);
+  return products;
 }
 
 export async function page() {
