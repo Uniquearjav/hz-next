@@ -10,7 +10,7 @@ import favicon from '../../public/media/favicon/hz.svg'
 export default function Header() {
   const [colorTheme, setTheme] = useDarkMode();
   return (
-        <header className='dark:text-white dark:bg-slate-800'>
+        <header className='dark:text-white'>
     <div id="NavBar" className="flex justify-between">
       <div id="Logo" className="flex flex-row items-center">
         <Image priority={true} src={favicon} width={64} height={64} className="h-20 p-1" alt=""/>
