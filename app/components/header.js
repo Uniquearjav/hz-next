@@ -14,7 +14,7 @@ export default function Header() {
     <div id="NavBar" className="flex justify-between">
       <div id="Logo" className="flex flex-row items-center">
         <Image priority={true} src={favicon} width={64} height={64} className="h-20 p-1" alt=""/>
-        <h1 className="text-black dark:text-white text-4xl">Horizaura</h1>
+        <h1 className="text-black dark:text-white text-4xl sm:max-md:collapse">Horizaura</h1>
       </div>
       <div id="Links" className="flex items-center">
         <Link className="link" href="/">Home</Link>

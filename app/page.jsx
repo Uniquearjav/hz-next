@@ -3,18 +3,17 @@ import Link from "next/link";
 import React from 'react'
 import HeroImage from "../public/media/products/HZ1.jpg";
 
-
-export const metadata = {
-  title: 'Horizaura : Furniture and Sofas Redefined',
-  description: `Horizaura: Enhancing homes with beautifully crafted elegance. Explore our stunning selection of sofas, home decor, and captivating resin plates. Experience the blend of artistic craftsmanship and comfort in every aspect. Welcome to a world where creativity meets refined style.`
-}
-
 async function getProducts() {
   const response = await fetch('https://hz-web.vercel.app/store/api/productjson?format=json');
   const products = await response.json();
-  console.log(products);
   return products;
 }
+
+export var met = {
+  title:'Hz '
+}
+
+export var metadata
 
 export async function page() {
   const products = await getProducts();
