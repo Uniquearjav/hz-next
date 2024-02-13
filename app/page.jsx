@@ -2,20 +2,9 @@ import Image from 'next/image'
 import Link from "next/link";
 import React from 'react'
 import HeroImage from "../public/media/products/HZ1.jpg";
+import { getProducts } from './Model/products';
 
-async function getProducts() {
-  const response = await fetch('https://hz-web.vercel.app/store/api/productjson?format=json');
-  const products = await response.json();
-  return products;
-}
-
-export var met = {
-  title:'Hz '
-}
-
-export var metadata
-
-export async function page() {
+export default async function page() {
   const products = await getProducts();
   return (
     <main className='dark:bg-black'>
@@ -61,5 +50,3 @@ export async function page() {
     </main>
   )
 }
-
-export default page
