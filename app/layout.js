@@ -22,10 +22,6 @@ const montserrat = Montserrat({
   dispaly: 'swap',
 })
 
-export var met = {
-  title: 'Horizaura'
-}
-
 export default function RootLayout({ children }) {
  return (
     <html lang="en" className={montserrat.className}>
@@ -43,9 +39,4 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   )
-}
-
-
-
-console.log(metadata)
-
+ }
