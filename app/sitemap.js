@@ -4,7 +4,7 @@ export default async function sitemap() {
   const products = await getProducts();
 
   const productUrls = products.map((product) => ({
-    url: `/store/${product.id}`,
+    url: `https://www.horizaura.tech/store/${product.id}`,
     lastModified: new Date(), // Modify this according to your product's last modification date
     changeFrequency: 'monthly', // Modify this according to your product's change frequency
     priority: 0.8, // Modify this according to your product's priority
@@ -18,13 +18,13 @@ export default async function sitemap() {
       priority: 1,
     },
     {
-      url: '/store',
+      url: 'https://www.horizaura.tech/store',
       lastModified: new Date(), // Modify this according to your store's last modification date
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: '/blog',
+      url: 'https://www.horizaura.tech/blog',
       lastModified: new Date(), // Modify this according to your blog's last modification date
       changeFrequency: 'monthly',
       priority: 0.8,
