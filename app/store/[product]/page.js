@@ -8,8 +8,6 @@ export default async function Page(props) {
     const getProductList = await getIndivisualProducts();
     const currentProduct = props.params.product;
     const ProductData = getProductList[currentProduct-1]
-    // console.log(getProductList)
-    console.log(ProductData);
 
     return (
         <div>
@@ -80,10 +78,10 @@ export default async function Page(props) {
     )
 }
 
-export async function generateStaticParams() {
-    const getIndProd = getIndivisualProducts();
-    const prod = await getIndProd;
-    return prod.map(prod=>({
-        product: prod.id.toString()
-    }))
-  }
+// export async function generateStaticParams() {
+//     const getIndProd = getIndivisualProducts();
+//     const prod = await getIndProd;
+//     return prod.map(prod=>({
+//         product: prod.id.toStrng()
+//     }))
+//   }

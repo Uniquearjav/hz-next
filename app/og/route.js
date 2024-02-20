@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ImageResponse } from 'next/og';
 // App router includes @vercel/og.
 // No need to install it.
@@ -42,7 +43,7 @@ export async function GET(request) {
               justifyItems: 'center',
             }}
           >
-          <img width="256" height="256" src={imageData} alt="" />
+          <Image width={256} height={256} src={imageData} alt="" />
           </div>
           <div
             style={{
