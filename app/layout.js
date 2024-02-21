@@ -6,8 +6,12 @@ import Head from 'next/head';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script'
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 
 export const metadata = {
+  // google site verification
+  verification: { google: "2gVaxd4v0HsWnXFAJ-gDgNtQXjvUGJIaHB-0_FSIkMM" },
   title: 'Horizaura : Furniture and Sofas Redefined',
   description: 'Horizaura: Enhancing homes with beautifully crafted elegance. Explore our stunning selection of sofas, home decor, and captivating resin plates. Experience the blend of artistic craftsmanship and comfort in every aspect. Welcome to a world where creativity meets refined style.',
   openGraph: {}
@@ -36,6 +40,8 @@ export default function RootLayout({ children }) {
       <body className='dark:bg-black'><Header/>{children}
       <SpeedInsights />
       <Analytics />
+      {/* Google Analytics == Google Tag Manager */}
+      <GoogleAnalytics gaId='G-93HRCG09JX' />
       </body>
     </html>
   )
