@@ -11,7 +11,7 @@ export default async function page() {
   const products = await getProducts();
   return (
 <section id="ProductHero" className='dark:bg-black'>
-      <h2 className="text-5xl text-center p-10">Browse The Range</h2>
+      <h2 className="text-5xl text-center p-10 dark:text-white">Browse The Range</h2>
       <div className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
         {products.map((product) => (
           <div key={product.id} className="products w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">

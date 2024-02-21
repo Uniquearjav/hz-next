@@ -1,24 +1,20 @@
-import Image from 'next/image';
 import { ImageResponse } from 'next/og';
-// App router includes @vercel/og.
-// No need to install it.
- 
+
 export const runtime = 'edge';
- 
+
 export async function GET(request) {
   try {
-    const imageData = await fetch(new URL('../../public/media/favicon/hz.jpg', import.meta.url)).then(
-      (res) => res.arrayBuffer(),
-    );
+    const imageDataBuffer = await fetch(new URL('../../public/media/favicon/hz.jpg', import.meta.url))
+      .then(res => res.arrayBuffer());
+    const imageDataBase64 = Buffer.from(imageDataBuffer).toString('base64');
+    const imageDataSrc = `data:image/jpeg;base64,${imageDataBase64}`;
+
     const { searchParams } = new URL(request.url);
-    console.log(searchParams)
- 
-    // ?title=<title>
-    const hasTitle = searchParams.has('title');
-    const title = hasTitle
-      ? searchParams.get('title')?.slice(0, 100)
+
+    const title = searchParams.has('title')
+      ? searchParams.get('title').slice(0, 100)
       : 'My default title';
- 
+
     return new ImageResponse(
       (
         <div
@@ -43,7 +39,7 @@ export async function GET(request) {
               justifyItems: 'center',
             }}
           >
-          <Image width={256} height={256} src={imageData} alt="" />
+            <img src={imageDataSrc} width={256} height={256} alt="" />
           </div>
           <div
             style={{

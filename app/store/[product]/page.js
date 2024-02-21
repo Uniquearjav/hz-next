@@ -78,6 +78,20 @@ export default async function Page(props) {
     )
 }
 
+export async function generateMetadata({ params, searchParams }, parent) {
+
+    const getProductList = await getIndivisualProducts();
+    const MetaCurrentProduct = params.product;
+    const MetaProductData = getProductList[MetaCurrentProduct-1]
+
+    return {
+      title: MetaProductData.name,
+      description: MetaProductData.description,
+      openGraph: {
+        images: `https://www.horizaura.tech/og?title=${MetaProductData.name}`,
+      },
+    }
+  }
 // export async function generateStaticParams() {
 //     const getIndProd = getIndivisualProducts();
 //     const prod = await getIndProd;

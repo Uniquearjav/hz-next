@@ -19,7 +19,7 @@ export const metadata = {
 
 metadata.openGraph.title = metadata.title;
 metadata.openGraph.description = metadata.description;
-metadata.openGraph.image = `https://www.horizaura.tech/og?title=${metadata.title}`
+metadata.openGraph.images = `https://www.horizaura.tech/og?title=${metadata.title}`
 
 const montserrat = Montserrat({
   subsets: ['latin'],

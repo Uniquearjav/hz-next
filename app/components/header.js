@@ -13,8 +13,10 @@ export default function Header() {
         <header className='dark:text-white'>
     <div id="NavBar" className="flex justify-between">
       <div id="Logo" className="flex flex-row items-center">
+      <Link aria-label='Horizaura' alt='Horizaura' href="/" >
         <Image priority={true} src={favicon} width={64} height={64} className="h-20 p-1" alt=""/>
         <h1 className="text-black dark:text-white text-4xl sm:max-md:collapse">Horizaura</h1>
+      </Link>
       </div>
       <div id="Links" className="flex items-center">
         <Link className="link" aria-label='Home' href="/">Home</Link>
@@ -23,8 +25,8 @@ export default function Header() {
         
       </div>
       <div id="Icons" className="flex items-center">
-        <a aria-label='search' href=""><Image src={search_svg} alt='search' className="h-10 dark:text-white p-1" alt=""/></a>
-        <a aria-label='cart' href=""><Image src={cart_svg} alt='cart' className="h-10 p-1" alt=""/></a>
+        <a aria-label='search' href=""><Image src={search_svg} alt='search' className="h-10 dark:text-white p-1"/></a>
+        <a aria-label='cart' href=""><Image src={cart_svg} alt='cart' className="h-10 p-1" /></a>
         {colorTheme === "light" ? (
         <svg
           onClick={() => setTheme("light")}

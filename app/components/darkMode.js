@@ -15,7 +15,7 @@ function useDarkMode() {
     if (typeof window !== "undefined") {
       localStorage.setItem("theme", theme);
     }
-  }, [theme]);
+  }, [theme, colorTheme]); // Include colorTheme in the dependency array
 
   return [colorTheme, setTheme];
 }
