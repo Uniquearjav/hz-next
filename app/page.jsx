@@ -25,10 +25,10 @@ export default async function page() {
 <section id="ProductHero" className='dark:bg-black'>
       <h2 className="text-5xl text-center p-10">Browse The Range</h2>
       <div className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-        {products.map((product) => (
+      {products.map((product) => (
           <div key={product.id} className="products w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-            <a href="#">
-              <Image src={`/media/products/HZ${product.id}.jpg`} alt="Product" width={288} height={320} className="h-80 w-72 object-cover rounded-t-xl" />
+            <a href={`/store/${product.id}`}>
+              <Image src={`/media/products/${product.product_id}.jpg`} alt={`${product.name}, ID - ${product.product_id}, Price - Rs. ${product.price}`} width={288} height={320} className="h-80 w-72 object-cover rounded-t-xl" />
               <div className="px-4 py-3 w-72">
                 <span className="text-gray-400 mr-3 uppercase text-xs">HORIZAURA</span>
                 <p className="text-lg font-bold text-black truncate block capitalize">{ product.name}</p>

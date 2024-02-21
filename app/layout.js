@@ -11,7 +11,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata = {
   // google site verification
-  verification: { google: "2gVaxd4v0HsWnXFAJ-gDgNtQXjvUGJIaHB-0_FSIkMM" },
+  verification: { google: process.env.GOOGLE_VERIFICATION_WEBSITE },
   title: 'Horizaura : Furniture and Sofas Redefined',
   description: 'Horizaura: Enhancing homes with beautifully crafted elegance. Explore our stunning selection of sofas, home decor, and captivating resin plates. Experience the blend of artistic craftsmanship and comfort in every aspect. Welcome to a world where creativity meets refined style.',
   openGraph: {}
@@ -34,14 +34,14 @@ export default function RootLayout({ children }) {
       <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon/favicon-32x32.png"/>
       <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png"/>
       <link rel="manifest" href="/media/favicon/site.webmanifest"/>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9405103571986725"
+      <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GOOGLE_ADSENSE}`}
      crossorigin="anonymous"></script>
       </Head>
       <body className='dark:bg-black'><Header/>{children}
       <SpeedInsights />
       <Analytics />
       {/* Google Analytics == Google Tag Manager */}
-      <GoogleAnalytics gaId='G-93HRCG09JX' />
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />
       </body>
     </html>
   )

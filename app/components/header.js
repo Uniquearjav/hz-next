@@ -17,14 +17,14 @@ export default function Header() {
         <h1 className="text-black dark:text-white text-4xl sm:max-md:collapse">Horizaura</h1>
       </div>
       <div id="Links" className="flex items-center">
-        <Link className="link" href="/">Home</Link>
-        <Link className="link" href="/store">Store</Link>
-        <Link className="link" href="/blogs">Blogs</Link>
+        <Link className="link" aria-label='Home' href="/">Home</Link>
+        <Link className="link" aria-label='Store' href="/store">Store</Link>
+        <Link className="link" aria-label='Blogs' href="/blogs">Blogs</Link>
         
       </div>
       <div id="Icons" className="flex items-center">
-        <a href=""><Image src={search_svg} className="h-10 dark:text-white p-1" alt=""/></a>
-        <a href=""><Image src={cart_svg} className="h-10 p-1" alt=""/></a>
+        <a aria-label='search' href=""><Image src={search_svg} alt='search' className="h-10 dark:text-white p-1" alt=""/></a>
+        <a aria-label='cart' href=""><Image src={cart_svg} alt='cart' className="h-10 p-1" alt=""/></a>
         {colorTheme === "light" ? (
         <svg
           onClick={() => setTheme("light")}
