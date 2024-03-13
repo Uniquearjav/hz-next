@@ -1,13 +1,23 @@
-import Image from 'next/image'
-import './globals.css'
-import { Montserrat } from "next/font/google";
-import Header from "./components/header"
-import Head from 'next/head';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from '@vercel/analytics/react';
-import Script from 'next/script'
+import { Poppins } from 'next/font/google'
+import "./globals.css";
+import Header from '../components/header'
+import Footer from '../components/footer'
+import Link from 'next/link';
+import Script from 'next/script';
+
+// Google Analytics
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+// Vercel Analytics
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react';
+
+// If loading a variable font, you don't need to specify the font weight
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700'],
+})
 
 export const metadata = {
   // google site verification
@@ -21,28 +31,23 @@ metadata.openGraph.title = metadata.title;
 metadata.openGraph.description = metadata.description;
 metadata.openGraph.images = `https://www.horizaura.tech/og?title=${metadata.title}`
 
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  dispaly: 'swap',
-})
 
 export default function RootLayout({ children }) {
- return (
-    <html lang="en" className={montserrat.className}>
-      <Head>
-      <link rel="apple-touch-icon" sizes="180x180" href="/media/favicon/apple-touch-icon.png"/>
-      <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon/favicon-32x32.png"/>
-      <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png"/>
-      <link rel="manifest" href="/media/favicon/site.webmanifest"/>
-      <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GOOGLE_ADSENSE}`}
-     crossorigin="anonymous"></script>
-      </Head>
-      <body className='dark:bg-black'><Header/>{children}
-      <SpeedInsights />
-      <Analytics />
-      {/* Google Analytics == Google Tag Manager */}
-      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />
-      </body>
+  return (
+    <html lang="en" className={poppins.className}>
+      <Link rel="apple-touch-icon" sizes="180x180" href="/media/favicon/apple-touch-icon.png"></Link>
+        <Link rel="icon" type="image/png" sizes="32x32" href="/media/favicon/favicon-32x32.png"></Link>
+        <Link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png"></Link>
+        <Link rel="manifest" href="/media/favicon/site.webmanifest"></Link>
+        <Script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GOOGLE_ADSENSE}`}
+          crossorigin="anonymous" />
+      <body> 
+        <Header /> {children}
+        <Analytics />
+        {/* Google Analytics == Google Tag Manager */}
+        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />
+        <Footer />
+        </body>
     </html>
   )
- }
+}

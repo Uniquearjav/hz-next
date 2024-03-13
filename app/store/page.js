@@ -1,39 +1,59 @@
-import { getProducts } from '../Model/products';
+"use client";
 import Image from 'next/image';
+import { Client, Databases, Query } from 'appwrite';
+import { useState, useEffect } from 'react';
 
-export const metadata = {
-  title: 'Horizaura | Store',
-  description: 'Discover the beauty of Horizaura Handcraft, where India finest handmade treasures come to life. Shop for intricate handwoven textiles, exquisite wooden artifacts, and more. Embrace the essence of Indian craftsmanship today!'
-}
+export default function Page({ params }) {
+    const [product, setProduct] = useState(null);
 
+    useEffect(() => {
+        const client = new Client()
+            .setEndpoint("https://cloud.appwrite.io/v1")
+            .setProject(process.env.APPWRITE_PROJECT);
 
-export default async function page() {
-  const products = await getProducts();
-  return (
-<section id="ProductHero" className='dark:bg-black'>
-      <h2 className="text-5xl text-center p-10 dark:text-white">Browse The Range</h2>
-      <div className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-        {products.map((product) => (
-          <div key={product.id} className="products w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-            <a href={`/store/${product.id}`}>
-              <Image src={`/media/products/${product.product_id}.jpg`} alt={`${product.name}, ID - ${product.product_id}, Price - Rs. ${product.price}`} width={288} height={320} className="h-80 w-72 object-cover rounded-t-xl" />
-              <div className="px-4 py-3 w-72">
-                <span className="text-gray-400 mr-3 uppercase text-xs">HORIZAURA</span>
-                <p className="text-lg font-bold text-black truncate block capitalize">{ product.name}</p>
-                <div className="flex items-center">
-                  <p className="text-lg font-semibold text-black dark:text-white cursor-auto my-3">&#8377; { product.price}</p>
-                  <div className="ml-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-bag-plus" viewBox="0 0 16 16">
-                      <path fillRule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                  </div>
+        const databases = new Databases(client);
+
+        databases.listDocuments(
+            "horizaura",
+            "Products",
+            [
+                Query.equal('product_id', params.productId)
+            ]
+        ).then(
+            function (response) {
+                console.log(response)
+                setProduct(response);
+            },
+            function (error) {
+                console.log(error);
+            }
+        );
+    }, [params.productId]);
+
+    return (
+        <div>
+            {params.productId}
+            <section className="body-font dark:text-white text-black overflow-hidden">
+                <div className="container px-5 py-24 mx-auto">
+                    <div className="lg:w-4/5 mx-auto flex flex-wrap">
+                        {product && (
+                            <div>
+                                <Image
+                                    width={400}
+                                    height={400}
+                                    alt={`${product.name}, ID - ${product.product_id}, Price - Rs. ${product.price}`}
+                                    className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                                    src={`/media/products/${product.product_id}.jpg`}
+                                />
+                                <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                                    <h2 className="text-sm title-font text-white tracking-widest">HORIZAURA - Big Furniture </h2>
+                                    <h1 className="text-3xl title-font text-white font-medium mb-1">{product.product_name}</h1>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
-              </div>
-            </a>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
+            </section>
+        </div>
+    );
 }

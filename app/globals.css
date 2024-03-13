@@ -2,13 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-.link {
-    @apply text-white font-semibold dark:text-white text-black text-lg hover:text-purple-800 hover:no-underline hover:font-extrabold mr-5 
-}
-.hz-dark {
-    @apply selection:bg-blue-300 selection:text-black
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-.hz-light {
-    @apply selection:bg-yellow-200 selection:text-black
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.header-link {
+  @apply dark:text-white mr-5 hover:text-gray-900 font-semibold text-xl
+}
+
+.footer-link {
+  @apply text-gray-600 hover:text-gray-800
+}
+
+.footer-title {
+  @apply font-medium text-gray-900 dark:text-white tracking-widest text-sm mb-3
 }
