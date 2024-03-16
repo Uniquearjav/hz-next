@@ -1,32 +1,80 @@
+"use client"
 import Image from 'next/image'
-import React from 'react'
 import Logo from '../public/horizaura.svg'
-import usersvg from '../public/icons/user.svg'
-import cartsvg from '../public/icons/cart.svg'
-import blogsvg from '../public/icons/blog.svg'
 import Link from 'next/link'
-
+import { useTheme } from 'next-themes';
+import * as React from "react"
+import { Moon, Sun } from "lucide-react"
+ 
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const Header = () => {
+  const { setTheme } = useTheme()
+
   return (
     <header>
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <Image src={Logo} height={80} width={80} className="h-20 p-1" alt="Logo" priority />
-          <h1 className="text-black dark:text-white text-4xl">Horizaura</h1>
-        </a>
-        <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <Link href='/' className="header-link">Home</Link>
-          <Link href='/store' className="header-link">Store</Link>
-          <Link href='/blog' className="header-link">Blog</Link>
-          <Link href='/ContactUs' className="header-link">Contact Us</Link>
-        </nav>
-        <div id="Icons" className="flex items-center">
-          {/* <Image src={usersvg}></Image>
-          <Image src={cartsvg}></Image>
-          <Image src={blogsvg}></Image> */}
-        </div>
-      </div>
+      <nav className="bg-white border-gray-200 dark:bg-black">
+  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Image src={Logo} height={80} width={80} alt="Horizaura Logo" priority />
+        <span className="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">Horizaura</span>
+    </Link>
+    <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span className="sr-only">Open main menu</span>
+        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
+        <li>
+          <Link href="/" className="header-link" aria-current="page">Home</Link>
+        </li>
+        <li>
+          <Link href="/store" className="header-link">Store</Link>
+        </li>
+        <li>
+          <Link href="/blog" className="header-link">Blog</Link>
+        </li>
+        <li>
+          <Link href="/contact_us" className="header-link">Contact Us</Link>
+        </li>
+      </ul>
+    </div>
+    <div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+    </div>
+  </div>
+</nav>
+        
+
+
+
     </header>
   )
 }
