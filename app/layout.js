@@ -6,14 +6,11 @@ import Link from "next/link";
 import Script from "next/script";
 import { cn } from "../lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
-
 // Google Analytics
 import { GoogleAnalytics } from "@next/third-parties/google";
-
 // Vercel Analytics
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-
 
 // If loading a variable font, you don't need to specify the font weight
 const poppins = Poppins({
