@@ -4,7 +4,7 @@ import Link from "next/link"
 function ProductCard({ product}) {
     return (
         <div key={product.id} className="products w-72 bg-white dark:bg-black shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-            <Link href={`/store/${product.product_id}`}>
+            <Link href={`/product/${product.product_id}`}>
               <Image src={`/media/products/${product.product_id}.jpg`} alt={`${product.product_name}, ID - ${product.product_id}, Price - Rs. ${product.price}`} width={288} height={320} className="h-80 w-72 object-cover rounded-t-xl" />
               <div className="px-4 py-3 w-72">
                 <span className="text-gray-400 mr-3  uppercase text-xs">HORIZAURA</span>
