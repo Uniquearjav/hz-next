@@ -11,6 +11,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 // Vercel Analytics
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import Head from "next/head";
 
 // If loading a variable font, you don't need to specify the font weight
 const poppins = Poppins({
@@ -35,32 +36,36 @@ metadata.openGraph.images = `https://www.horizaura.tech/og?title=${metadata.titl
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/media/favicon/apple-touch-icon.png"
-      ></Link>
-      <Link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/media/favicon/favicon-32x32.png"
-      ></Link>
-      <Link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/media/favicon/favicon-16x16.png"
-      ></Link>
-      <Link rel="manifest" href="/media/favicon/site.webmanifest"></Link>
-      <Script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GOOGLE_ADSENSE}`}
-        crossorigin="anonymous"
-      />
+      <Head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/media/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/media/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/media/favicon/favicon-16x16.png"
+        />
+        <Link rel="manifest" href="/media/favicon/site.webmanifest" />
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.GOOGLE_ADSENSE}`}
+          crossorigin="anonymous"
+        />
+      </Head>
+
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased ",
           poppins.className
         )}
       >
@@ -71,7 +76,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Header />
-           {children}
+          <div>{children}</div>
         </ThemeProvider>
         <Analytics />
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS} />

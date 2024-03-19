@@ -6,6 +6,13 @@ import {
     BreadcrumbSeparator,
   } from "@/components/ui/breadcrumb"
 
+  const link = {
+    '/' : 'Home',
+    '/store' : 'About',
+    {`/product/${params.productId}`} : 'Services',
+    '/contact' : 'Contact',
+
+  }
   
   export function NextBreadcrumb() {
     return (

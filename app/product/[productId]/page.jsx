@@ -8,7 +8,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { IndianRupee, Star, StarHalf } from "lucide-react";
+import { Home, IndianRupee, Star, StarHalf, Store } from "lucide-react";
 
 export default async function Page({ params }) {
     let INRIndia = new Intl.NumberFormat('en-IN', {
@@ -23,7 +23,23 @@ export default async function Page({ params }) {
     return (
             <section className="body-font dark:text-white text-black overflow-hidden">
                 <div className="container px-5 py-24 mx-auto">
-
+                    <span id='breadcrumb' className="px-10 py-10">
+                        <Breadcrumb>
+                            <BreadcrumbList>
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink href="/"> <span className="flex items-center"> <Home className="p-1" /> Home </span> </BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator />
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink href="/store"><span className="flex items-center"> <Store className="p-1" /> Store</span> </BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator />
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink href={`/product/${product.product_id}`}> {product.product_id} - {product.product_name}</BreadcrumbLink>
+                                </BreadcrumbItem>
+                            </BreadcrumbList>
+                        </Breadcrumb>
+                    </span>
                 {product && (
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <Image alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" width={400} height={400} src={`/media/products/${product.product_id}.jpg`} />

@@ -8,21 +8,22 @@ import {
   } from "@/components/ui/breadcrumb"
 import ProductCard from "@/components/productcard";
 import { fetchData } from "@/config/appwritejson";
+import { Home, StoreIcon } from 'lucide-react';
 
 export default async function Store(){
     const products = await fetchData();
   return (
-    <main>
+    <main className='container'>
         <p className='text-black dark:text-white text-5xl p-10 text-center'>Store</p>
-        <span id='breadcrumb' className="px-10 py-10">
+        <span id='breadcrumb' className="px-10 dark:text-white text-black py-10">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            <BreadcrumbLink href="/"> <span className='flex items-center '><Home className='p-1' /> Home</span> </BreadcrumbLink>
           </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-            <BreadcrumbLink href="/store">Store</BreadcrumbLink>
+            <BreadcrumbLink href="/store"><span className='flex items-center'> <StoreIcon className='p-1'/> Store</span> </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
         </BreadcrumbList>

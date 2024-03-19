@@ -12,10 +12,8 @@ export async function fetchData() {
     try {
         const response = await databases.listDocuments('horizaura', 'Products');
         const productIds = response.documents;
-        console.log(productIds); // Array of product IDs
         return productIds; 
     } catch (error) {
-        console.error('Error fetching data:', error);
         return []; // Return an empty array in case of error
     }
 }

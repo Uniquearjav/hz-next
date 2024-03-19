@@ -1,7 +1,11 @@
+import { IndianRupee } from "lucide-react";
 import Image from "next/image"
 import Link from "next/link"
 
 function ProductCard({ product}) {
+    let INRIndia = new Intl.NumberFormat('en-IN', {
+      maximumSignificantDigits: 3
+    });
     return (
         <div key={product.id} className="products w-72 bg-white dark:bg-black shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
             <Link href={`/product/${product.product_id}`}>
@@ -10,7 +14,7 @@ function ProductCard({ product}) {
                 <span className="text-gray-400 mr-3  uppercase text-xs">HORIZAURA</span>
                 <p className="text-lg font-bold text-black dark:text-white truncate block capitalize">{ product.product_name}</p>
                 <div className="flex items-center">
-                  <p className="text-lg font-semibold text-black dark:text-white cursor-auto my-3">{ product.price } </p>
+                  <p className="text-lg font-semibold text-black dark:text-white cursor-auto my-3"> <span className="flex items-center"> <IndianRupee /> {INRIndia.format(product.price)}</span></p>
                   <div className="ml-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-bag-plus" viewBox="0 0 16 16">
                       <path fillRule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />

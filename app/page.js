@@ -8,17 +8,20 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Home } from "lucide-react";
+import ImageSlider from "@/components/slider";
+
 
 export default async function Page() {
     const products = await fetchData();
 
   return (
-    <div>
+    <main className="container">
+      <ImageSlider />
       <span id='breadcrumb' className="px-10 py-10">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/"> <span className="flex items-center"><Home /> Home </span> </BreadcrumbLink>
+            <BreadcrumbLink href="/"> <span className="flex items-center"><Home className="p-1"/>Home </span> </BreadcrumbLink>
           </BreadcrumbItem>
             <BreadcrumbSeparator />
         </BreadcrumbList>
@@ -30,6 +33,6 @@ export default async function Page() {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-    </div>
+    </main>
   );
 }
