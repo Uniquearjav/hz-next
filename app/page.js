@@ -8,7 +8,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Home } from "lucide-react";
-import ImageSlider from "@/components/slider";
 
 
 export default async function Page() {
@@ -16,7 +15,6 @@ export default async function Page() {
 
   return (
     <main className="container">
-      <ImageSlider />
       <span id='breadcrumb' className="px-10 py-10">
       <Breadcrumb>
         <BreadcrumbList>
